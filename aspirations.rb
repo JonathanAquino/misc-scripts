@@ -55,6 +55,9 @@ aspirations = [
     'Thy will be done!',
 ]
 while true do
+    `afplay /System/Library/Sounds/Blow.aiff`
+    `afplay /System/Library/Sounds/Blow.aiff`
+    `afplay /System/Library/Sounds/Blow.aiff`
     `terminal-notifier -message "#{aspirations.shuffle.first}"`
     `sleep 3600`
 end
