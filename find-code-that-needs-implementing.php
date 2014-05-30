@@ -5,29 +5,20 @@
  *
  * This script needs ack to run. See http://beyondgrep.com/ .
  */
-$x = 'googlePlusOne';
-$y = 'linkedInSharing';
+// Case-insensitive patterns for initial search.
+$x = 'contentInboundEmailPrefix';
+$y = 'extendedAttributes';
 // Case-sensitive X-Y pairs that are considered to be equivalent.
 $equivalentPairs = [
-    'GooglePlusOne' => 'LinkedInSharing',
-    'googlePlusOne' => 'linkedInSharing',
-    'google-plusone' => 'linkedin-sharing',
+    'contentInboundEmailPrefix' => 'extendedAttributes',
+    'ContentInboundEmailPrefix' => 'ExtendedAttributes',
 ];
 // Filename and string patterns to ignore. Empty this list when you are starting.
-$ignore = ['instances/main/widget-configuration.xml',
-           'lib/XG_App.php',
-           'lib/XG_ConfigHelper.php',
-           'lib/Migration/NetworkSetting.php',
-           'afterContent.php',
-           'googlePlusOneButton.php',
-           'XG_JsMetadata.php',
-           'LikeController.php',
-           'googlePlusOne.js',
-           'GooglePlusOneApi'];
+$ignore = [];
 $ignore = implode('|', $ignore);
-$baseDirectory = realpath(dirname(__FILE__) . "/../webapp");
-$xMatches = shell_exec("cd $baseDirectory; ack -i $x | ack -v '$ignore' | ack -vi $y");
-$yMatches = shell_exec("cd $baseDirectory; ack -i $y | ack -v '$ignore'");
+$baseDirectory = dirname(__FILE__);
+$xMatches = shell_exec("cd $baseDirectory; ack -i $x" . ($ignore ? " | ack -v '$ignore'" : ''));
+$yMatches = shell_exec("cd $baseDirectory; ack -i $y" . ($ignore ? " | ack -v '$ignore'" : ''));
 $xMatches = preg_replace('/:\d+:/', '::: ', $xMatches);
 $yMatches = preg_replace('/:\d+:/', '::: ', $yMatches);
 $replacedXMatches = str_replace(array_keys($equivalentPairs), array_values($equivalentPairs), $xMatches);
@@ -36,6 +27,7 @@ $replacedXLines = explode("\n", $replacedXMatches);
 $replacedXLineNumbers = array_flip($replacedXLines);
 $yLines = explode("\n", $yMatches);
 $unmatchedReplacedXLines = array_diff($replacedXLines, $yLines);
+// Ignore comments.
 $ignore = '@:::\\s*/
            |:::\\s*\*
            @xi';
