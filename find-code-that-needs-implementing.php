@@ -37,5 +37,6 @@ foreach ($unmatchedReplacedXLines as $unmatchedReplacedXLine) {
     }
     $replacedXLineNumber = $replacedXLineNumbers[$unmatchedReplacedXLine];
     $xLine = $xLines[$replacedXLineNumber];
+    // echo "DEBUG: Can't find: " . $unmatchedReplacedXLine . "\n";
     echo "$xLine\n";
 }
