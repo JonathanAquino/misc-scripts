@@ -1,0 +1,56 @@
+# This is a .gitignore file for Phonegap projects that version their /platforms
+# and /plugins directories.
+
+# The rules below improve on https://github.com/crilleengvall/gitignore/blob/master/Phonegap.gitignore
+
+# ANDROID / ECLIPSE
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+ant-build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Android
+R.java.d
+platforms/android/ant-gen/com/ning/phoenix/R.java
+
+# IOS / Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+platforms/ios/www
+platforms/ios/cordova/console.log
+
+# OSX
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
