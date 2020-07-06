@@ -3,4 +3,4 @@ This bookmarklet for Chrome monitors the current Gihub page for the strings "All
 
 It is useful for letting you know when your PR build is done.
 
-Drag the [bookmarklet](https://raw.githubusercontent.com/JonathanAquino/misc-scripts/master/pr-monitor/pr-monitor.bookmarklet.js) to your bookmarks bar.
+Drag the [PR Monitor](https://raw.githubusercontent.com/JonathanAquino/misc-scripts/master/pr-monitor/pr-monitor.bookmarklet.js) bookmarklet to your bookmarks bar.
