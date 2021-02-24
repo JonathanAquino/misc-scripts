@@ -46,5 +46,10 @@ source ~/.config/lf/lfcd.sh
 
 source ~/.zshrc-extras
 
+# Like ack but lets you open an editor on a search result.
+# brew install fzf ripgrep bat micro
+ak() {
+  rg --column --line-number --no-heading --color=always "${1:-}" | fzf --reverse --ansi --delimiter ':' --preview-window '+{2}-/2' --preview 'bat --color "always" {1} 2> /dev/null' --bind "enter:execute:(micro -parsecursor on {1}:{2})"
+}
 
 
